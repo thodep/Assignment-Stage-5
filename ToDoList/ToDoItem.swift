@@ -9,6 +9,7 @@
 import UIKit
 
 class ToDoItem: NSObject {
+    //Add the following code to declare and initialize the properties of the class:
     
     var itemName: NSString = ""
     var completed:Bool = false

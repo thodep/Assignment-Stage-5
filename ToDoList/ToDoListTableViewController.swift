@@ -10,19 +10,21 @@ import UIKit
 
 
 class ToDoListTableViewController: UITableViewController {
+    
     //Declare to do items array
     var toDoItems: NSMutableArray = []
     
     //Add a function to load some initial data:
     func loadInitialData() {
+        
     var item1 = ToDoItem(name: "Buy Milk")
-     toDoItems.addObject(item1)
+    toDoItems.addObject(item1)
         
     var item2 = ToDoItem(name: "Buy Love")
-      toDoItems.addObject(item2)
+    toDoItems.addObject(item2)
         
-     var item3 = ToDoItem(name: "Cut Meat")
-        toDoItems.addObject(item3)
+    var item3 = ToDoItem(name: "Cut Meat")
+    toDoItems.addObject(item3)
 
     }
     
@@ -30,12 +32,16 @@ class ToDoListTableViewController: UITableViewController {
     
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
         var source: ViewController = segue.sourceViewController as! ViewController
+        
+        
+        // Now that we have created a toDoItem, we need to display it in the list.
+        //We use the unwindToList method to add a new item:
         if var item: ToDoItem = source.toDoItem {
-        self.toDoItems.addObject(item)
-            self.tableView.reloadData()
+        toDoItems.addObject(item)
+        tableView.reloadData()
         
         }
-        print("go back TableVC")
+        print("go back 2 TableVC")
     }
 
     override func viewDidLoad() {
@@ -83,7 +89,9 @@ class ToDoListTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        
         var tappedItem: ToDoItem = self.toDoItems.objectAtIndex(indexPath.row) as!ToDoItem
         tappedItem.completed = !tappedItem.completed
         tableView.reloadData()

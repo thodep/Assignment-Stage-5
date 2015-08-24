@@ -30,8 +30,8 @@ class ViewController: UIViewController {
         if let touch = touches.first as? UITouch {
         
         }
-        // super.touchesBegan(touches , withEvent:event)
-        super.view.endEditing(true)
+        super.touchesBegan(touches , withEvent:event)
+       // super.view.endEditing(true)
     }
 
    
@@ -39,9 +39,8 @@ class ViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
+        //To create a to-do item after tapping the Done button, we need override the prepareForSegue method:
         if count(textField.text.utf16) > 0 {
         self.toDoItem = ToDoItem(name: self.textField.text)
         }
